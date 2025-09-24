@@ -16,20 +16,11 @@ export default defineConfig({
           vendor: ['react', 'react-dom'],
           ui: ['lucide-react']
         }
-      },
-      external: (id) => {
-        // Exclude problematic internal modules
-        if (id.includes('define-globalThis-property') || 
-            id.includes('globalThis-this') ||
-            id.includes('../internals/')) {
-          return true
-        }
-        return false
       }
     }
   },
-  define: {
-    global: 'globalThis'
+  optimizeDeps: {
+    exclude: ['define-globalThis-property']
   }
 })
 
